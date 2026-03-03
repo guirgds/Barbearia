@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Barbearia - Agendamentos</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Barbearia • Agendamento</h1>
+      <p>Agende para uma ou mais pessoas com múltiplos serviços e promoção aplicada.</p>
+    </header>
+
+    <main class="grid">
+      <section class="card">
+        <h2>Novo agendamento</h2>
+        <form id="appointment-form">
+          <label>
+            Data
+            <input type="date" id="date" required />
+          </label>
+          <label>
+            Horário
+            <input type="time" id="time" required />
+          </label>
+          <label>
+            Barbeiro
+            <select id="barber" required></select>
+          </label>
+          <label>
+            Promoção aplicada
+            <select id="promotion-select">
+              <option value="">Sem promoção</option>
+            </select>
+          </label>
+
+          <div>
+            <div class="row between">
+              <h3>Pessoas no atendimento</h3>
+              <button type="button" id="add-person">+ Pessoa</button>
+            </div>
+            <div id="people-list"></div>
+          </div>
+
+          <article class="price-box">
+            <p><strong>Subtotal:</strong> <span id="subtotal-value">R$ 0,00</span></p>
+            <p><strong>Desconto:</strong> <span id="discount-value">R$ 0,00</span></p>
+            <p><strong>Total final:</strong> <span id="total-value">R$ 0,00</span></p>
+          </article>
+
+          <button type="submit" class="full">Salvar agendamento</button>
+        </form>
+      </section>
+
+      <section class="card">
+        <h2>Administração</h2>
+
+        <h3>Barbeiros</h3>
+        <form id="barber-form" class="inline">
+          <input id="new-barber" placeholder="Nome do barbeiro" required />
+          <button type="submit">Adicionar</button>
+        </form>
+        <ul id="barbers-admin"></ul>
+
+        <hr />
+
+        <h3>Promoções</h3>
+        <form id="promotion-form">
+          <label>
+            Título
+            <input id="promotion-title" placeholder="Ex: Combo Corte + Barba" required />
+          </label>
+          <label>
+            Descrição
+            <input id="promotion-description" placeholder="Ex: 20% de desconto até sexta" required />
+          </label>
+          <label>
+            Desconto (%)
+            <input id="promotion-discount" type="number" min="1" max="100" required />
+          </label>
+          <label>
+            Válida até
+            <input id="promotion-expires-at" type="date" required />
+          </label>
+          <button type="submit">Publicar promoção</button>
+        </form>
+        <ul id="promotions-admin"></ul>
+      </section>
+
+      <section class="card">
+        <div class="row between center">
+          <h2>Painel do cliente</h2>
+          <span id="promotion-badge" class="badge hidden">0 novas</span>
+        </div>
+        <p class="muted">Os clientes veem promoções ativas e recebem alertas de novas ofertas.</p>
+        <p class="muted">As informações ficam salvas localmente no navegador (localStorage).</p>
+        <div class="row">
+          <button id="enable-browser-notifications" type="button">Ativar notificações do navegador</button>
+          <button id="mark-promotions-read" type="button" class="ghost">Marcar como lidas</button>
+        </div>
+        <div id="promotions-user"></div>
+      </section>
+
+      <section class="card wide">
+        <h2>Agenda</h2>
+        <div id="appointments"></div>
+      </section>
+    </main>
+
+    <div id="toast" class="toast hidden"></div>
+
+    <template id="person-template">
+      <div class="person-item">
+        <div class="row between">
+          <label>
+            Nome da pessoa
+            <input class="person-name" required />
+          </label>
+          <button type="button" class="remove-person danger">Remover</button>
+        </div>
+        <label>
+          Serviços
+          <div class="services">
+            <label><input type="checkbox" value="Corte" data-price="45" /> Corte (R$ 45)</label>
+            <label><input type="checkbox" value="Barba" data-price="35" /> Barba (R$ 35)</label>
+            <label><input type="checkbox" value="Sobrancelha" data-price="20" /> Sobrancelha (R$ 20)</label>
+            <label><input type="checkbox" value="Pigmentação" data-price="60" /> Pigmentação (R$ 60)</label>
+          </div>
+        </label>
+      </div>
+    </template>
+
+    <script src="app.js"></script>
+  </body>
+</html>
