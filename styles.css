@@ -1,0 +1,93 @@
+:root {
+  color-scheme: light;
+  font-family: Inter, Arial, sans-serif;
+  --bg: #f4f6f8;
+  --card: #ffffff;
+  --text: #101828;
+  --accent: #1d4ed8;
+  --danger: #b42318;
+  --border: #d0d5dd;
+}
+
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--text); }
+header { background: #111827; color: #fff; padding: 1.2rem; }
+header h1, header p { margin: 0.2rem 0; }
+h2, h3 { margin-top: 0; }
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.card { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 1rem; }
+.wide { grid-column: 1 / -1; }
+
+label, input, select, button { display: block; width: 100%; }
+label { font-size: 0.95rem; margin-bottom: 0.7rem; }
+input, select, button { padding: 0.6rem; margin-top: 0.3rem; border: 1px solid var(--border); border-radius: 8px; }
+button { background: var(--accent); color: white; border: none; cursor: pointer; }
+button:hover { filter: brightness(1.05); }
+
+hr { border: none; border-top: 1px solid var(--border); margin: 1rem 0; }
+.row { display: flex; gap: 0.7rem; align-items: end; }
+.center { align-items: center; }
+.between { justify-content: space-between; }
+.inline { display: flex; gap: 0.5rem; }
+.inline input { flex: 1; }
+
+.person-item,
+.appointment,
+.promotion-card,
+.promotion-item,
+.price-box {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.8rem;
+  margin-bottom: 0.8rem;
+  background: #fcfcfd;
+}
+
+.services { display: grid; grid-template-columns: repeat(2, minmax(120px, 1fr)); gap: 0.4rem; }
+.services label { display: flex; align-items: center; gap: 0.4rem; margin: 0; }
+.services input { width: auto; margin: 0; }
+
+ul { padding-left: 1rem; }
+.danger { background: var(--danger); }
+.ghost { background: #98a2b3; }
+.mini { width: auto; padding: 0.45rem 0.7rem; }
+.promotion-item { display: flex; justify-content: space-between; gap: 0.8rem; list-style: none; }
+.promotion-card h3, .promotion-card p, .price-box p { margin: 0 0 0.35rem; }
+
+.badge {
+  display: inline-block;
+  width: auto;
+  padding: 0.2rem 0.5rem;
+  border-radius: 100px;
+  background: #fde68a;
+  color: #78350f;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.toast {
+  position: fixed;
+  right: 1rem;
+  bottom: 1rem;
+  background: #111827;
+  color: white;
+  padding: 0.8rem 1rem;
+  border-radius: 8px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  z-index: 50;
+}
+
+.full { margin-top: 1rem; }
+.hidden { display: none; }
+.muted { color: #667085; margin-top: 0; }
+
+@media (max-width: 720px) {
+  .row { flex-direction: column; align-items: stretch; }
+}
